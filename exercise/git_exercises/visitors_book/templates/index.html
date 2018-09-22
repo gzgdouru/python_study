@@ -1,0 +1,44 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>visitors'book</title>
+    <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+    <section>
+        <h1>留言簿</h1>
+        <p>请尽情留言:</p>
+        <form action="comment/" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="{{ form.name.id_for_label }}">姓名</label>
+                {{ form.name }}
+                {{ form.name.errors }}
+                <!--<input type="text" name="name" value="">-->
+            </div>
+
+            <div>
+                <label for="{{ for.text.id_for_label }}">内容</label>
+                <!--<textarea rows="10" cols="50"></textarea>-->
+                {{ form.text }}
+                {{ form.text.errors }}
+            </div>
+            <button type="submit">发表</button>
+        </form>
+    </section>
+
+    <section id="comment_content">
+        <h3>留言历史信息</h3>
+        {% for comment in comment_list %}
+        <article>
+            <p>{{ comment.name }} 留言于({{ comment.create_time }})</p>
+            <p>{{ comment.text }}</p>
+        </article>
+        {% empty %}
+        暂无留言
+        {% endfor %}
+    </section>
+</body>
+</html>

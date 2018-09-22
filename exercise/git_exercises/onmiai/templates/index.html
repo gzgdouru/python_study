@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3>当前用户: {{ request.session.user_info.nick_name }}</h3>
+    <a href="{% url 'userAuth:logout' %}">注销</a>
+
+    <h3>异性列表</h3>
+    <a href="others/">查看和我有关系的异性</a>
+    <ul>
+        {% for row in user_list %}
+        <li>{{ row.nickname }}</li>
+        {% empty %}
+        没有异性的信息
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
