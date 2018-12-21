@@ -59,3 +59,4 @@ if __name__ == "__main__":
     # loop.run_until_complete(asyncio.gather(group1, group2))
     # loop.close()
     # print(time.time() - start_time)
+    loop.run_in_executor()
