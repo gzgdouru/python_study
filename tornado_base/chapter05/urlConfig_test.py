@@ -19,6 +19,7 @@ class PeopleNameHandler(web.RequestHandler):
     def get(self, name, *args, **kwargs):
         self.write("用户姓名:{}".format(name))
 
+
 class PeopleInfoHanler(web.RequestHandler):
     def get(self, name, age, gender, *args, **kwargs):
         self.write("用户姓名:{}, 用户年龄:{}, 用户性别:{}".format(name, age, gender))

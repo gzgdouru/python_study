@@ -5,7 +5,7 @@ import socket
 from urllib.parse import urlparse
 
 if __name__ == "__main__":
-    url = r'http://blog.jobbole.com/all-posts/'
+    url = r'http://ljwancaiji.com/'
 
     # 从url中解析出主机和请求路径
     url = urlparse(url)
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     #发送html请求
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.connect((host, 80))
-    http_request = "GET {path}\r\nHost:{host}\r\nConnection:close\r\n\r\n".format(path=path, host=host)
+    http_request = "GET {path} HTTP/1.0\r\nHost:{host}\r\nConnection:close\r\n\r\n".format(path=path, host=host)
     sock.send(http_request.encode("utf-8"))
 
     #接收返回数据
